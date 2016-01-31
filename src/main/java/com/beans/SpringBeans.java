@@ -1,8 +1,10 @@
 package com.beans;
 
+import com.abc.foo.User;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
 import java.util.Arrays;
@@ -14,6 +16,12 @@ import java.util.Arrays;
 @SpringBootApplication
 public class SpringBeans {
 
+    @Bean
+    public User user()
+    {
+        return new User("onder","ozer");
+    }
+
     public static void main(String[] args) {
 
         ApplicationContext ctx = SpringApplication.run(SpringBeans.class,args);
@@ -23,6 +31,8 @@ public class SpringBeans {
         for (String name : beanName) {
             System.out.println(name);
         }
+
+        System.out.println(ctx.getBean("user").toString());
 
     }
 }

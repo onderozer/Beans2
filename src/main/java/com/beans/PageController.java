@@ -1,5 +1,7 @@
 package com.beans;
 
+import com.abc.foo.NotificationService;
+import com.abc.foo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,18 +12,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class PageController {
 
-    //@Autowired
-   // private NotifcationService notificationService;
+    private NotificationService notificationService;
 
     @Autowired
-    //private User user;
+    public void setNotificationService(NotificationService notificationService) {
+        this.notificationService = notificationService;
+    }
 
     @RequestMapping("/")
     public String home() {
-        //return notificationService.toString();
-        //return user.toString();
+        return notificationService.toString();
     }
-
 }
-
-
